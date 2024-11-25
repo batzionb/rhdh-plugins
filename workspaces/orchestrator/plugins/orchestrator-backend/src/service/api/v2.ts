@@ -162,12 +162,7 @@ export class V2 {
     executeWorkflowRequestDTO: ExecuteWorkflowRequestDTO,
     workflowId: string,
     businessKey: string | undefined,
-  ): Promise<ExecuteWorkflowResponseDTO> {
-    if (Object.keys(executeWorkflowRequestDTO?.inputData).length === 0) {
-      throw new Error(
-        `ExecuteWorkflowRequestDTO.inputData is required for executing workflow with id ${workflowId}`,
-      );
-    }
+  ): Promise<ExecuteWorkflowResponseDTO> {    
 
     const definition = await this.orchestratorService.fetchWorkflowInfo({
       definitionId: workflowId,
@@ -182,7 +177,7 @@ export class V2 {
     const executionResponse = await this.orchestratorService.executeWorkflow({
       definitionId: workflowId,
       inputData:
-        executeWorkflowRequestDTO?.inputData as ProcessInstanceVariables,
+        executeWorkflowRequestDTO.inputData as ProcessInstanceVariables,
       serviceUrl: definition.serviceUrl,
       businessKey,
       cacheHandler: 'throw',

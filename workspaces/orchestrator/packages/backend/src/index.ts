@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import { createBackend } from '@backstage/backend-defaults';
+import { scaffolderModuleCustomExtensions } from '@red-hat-developer-hub/backstage-plugin-orchestrator-backend';
 
 const backend = createBackend();
 
@@ -58,5 +59,7 @@ backend.add(import('@backstage/plugin-signals-backend'));
 
 // permission plugin
 backend.add(import('@backstage-community/plugin-rbac-backend'));
+backend.add(scaffolderModuleCustomExtensions);
+
 
 backend.start();

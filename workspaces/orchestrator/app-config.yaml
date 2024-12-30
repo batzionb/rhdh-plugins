@@ -108,6 +108,10 @@ catalog:
       target: ../../users.yaml
       rules:
         - allow: [User]
+    
+    - type: file
+      target: '../../entities/workflowTemplate.yaml'
+      
 
 dynamicPlugins:
   frontend: {}

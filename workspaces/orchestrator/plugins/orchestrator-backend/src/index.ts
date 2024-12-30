@@ -14,3 +14,4 @@
  * limitations under the License.
  */
 export { orchestratorPlugin as default } from './plugin';
+export {scaffolderModuleCustomExtensions} from './module'

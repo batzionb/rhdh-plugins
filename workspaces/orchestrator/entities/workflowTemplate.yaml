@@ -1,0 +1,33 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: greeting
+  title: Greeting
+  description: |
+    A template for running greeting workflow
+spec:
+  owner: backstage/maintainers
+  type: website
+
+  parameters:
+    - title: Provide inputs
+      required:
+        - language
+      properties:
+        language:
+          title: Language          
+          type: string
+          ui:autofocus: true,
+          enum: 
+            - "English"
+            - "Spanish"
+          default: "English"        
+        name:
+          title: Name
+          type: string                    
+  steps:
+    - id: run-workflow
+      name: List Inputs
+      action: orchestrator:workflow:run
+      input:
+        parameters: ${{ parameters }}

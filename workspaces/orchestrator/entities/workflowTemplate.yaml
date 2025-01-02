@@ -1,10 +1,10 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: greeting
+  name: yamlgreet
   title: Greeting
   description: |
-    A template for running greeting workflow
+    Greeting workflow
 spec:
   owner: backstage/maintainers
   type: website
@@ -26,8 +26,13 @@ spec:
           title: Name
           type: string                    
   steps:
-    - id: run-workflow
-      name: List Inputs
+    - id: runWorkflow
+      name: Run workflow
       action: orchestrator:workflow:run
       input:
         parameters: ${{ parameters }}
+  output:
+    links:
+      - title: Open workflow run
+        url: ${{ steps.runWorkflow.output.instanceUrl }}
+      

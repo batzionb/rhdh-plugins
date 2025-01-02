@@ -70,6 +70,7 @@ export class OrchestratorClient implements OrchestratorApi {
 
   async getDefaultAPI(): Promise<DefaultApi> {
     const baseUrl = await this.getBaseUrl();
+    console.log("baseUrl", baseUrl);
     const { token: idToken } = await this.identityApi.getCredentials();
 
     // Fixme: Following makes mocking of global axios complicated in the tests, ideally there should be just one axios instance:

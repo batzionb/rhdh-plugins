@@ -14,4 +14,10 @@
  * limitations under the License.
  */
 
-export { orchestratorPlugin as default } from './plugin';
+/**
+ * The orchestrator-scaffolder backend module for the scaffolder plugin.
+ *
+ * @packageDocumentation
+ */
+
+export { scaffolderModuleOrchestratorScaffolder as default } from './module';

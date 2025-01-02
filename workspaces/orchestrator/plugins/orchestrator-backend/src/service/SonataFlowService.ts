@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 The Backstage Authors
+ * Copyright Red Hat, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { LoggerService } from '@backstage/backend-plugin-api';
 
 import {
@@ -125,7 +126,7 @@ export class SonataFlowService {
         'POST',
       );
       this.logger.error(
-        `Execute workflow failed. Response: ${JSON.stringify(json)}`,
+        `Execute workflow failed. Response: ${JSON.stringify(json)}. Request body: ${JSON.stringify(args.inputData)}`,
       );
       throw new Error(errorMessage);
     } else {
@@ -240,7 +241,7 @@ export class SonataFlowService {
       errorInfo.push(`Stack: ${jsonResponse?.stack}`);
     }
     if (jsonResponse?.message) {
-      errorInfo.push(`Message: ${jsonResponse?.message0}`);
+      errorInfo.push(`Message: ${jsonResponse?.message}`);
     }
     if (errorInfo.length > 0) {
       errorMsg += ` ${errorInfo.join(', ')}`;
